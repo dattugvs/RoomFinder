@@ -19,4 +19,4 @@ Registered User either can find a room or a roommate according to his/her requir
 ‘Post a Room’  is used to post the room details and the amenities and rules for the users who wants to get a room/roommate.
 After posting the room a ‘room profile’ is generated which shows the posted room details like Rent, Deposit, Check In date and Duration etc. This is developed in javascript and used ‘mongoose’ to save the information in database.
 
-Similarly, Any user can ‘find a room’ by searching with the city or area names. The results will be filtered based on the user amenities with a location shown in the map within the same page thereby finding a room and find Roommates (Who Get You) according to the users common tastes and requirements.
+Similarly, Any user can ‘find a room’ by searching with the city or area names. The results will be filtered based on the user amenities with a location shown in the map within the same page thereby finding a room and find Roommates (Who Get You) with the users common tastes and requirements.
