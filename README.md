@@ -5,7 +5,7 @@ Room Finder is a web application developed using Node.js and Mongodb. This appli
 If you would like to download the code and try it for yourself :
   1. Clone the Repo.
   2. Add the Facebook App Id,  App Secret and MongoDB URL in /config / keys.js
-  3. Add the API KEY for the google maps api.
+  3. Add the API KEY for the google maps api in /views : index.ejs and findroom.ejs
   4. Install node modules by npm install.
   5. Run/ Start server by ‘node server.js’
   6. Open the Index page at localhost : 3000
