@@ -2,8 +2,6 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var LocalStrategy    = require('passport-local').Strategy;
 
 var Promise          = require('bluebird');
-mongoose.Promise     = Promise;
-
 var models = require('../models/user');
 
 
