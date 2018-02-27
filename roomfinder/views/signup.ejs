@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>sign up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/socialbtn.css">
+    <link rel="stylesheet" type="text/css" href="/css/signup.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link href="/css/datepicker.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/datepicker.min.js"></script>
+    <script src="/js/datepicker.en.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      body {
+      background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+<nav class="navbar fixed-top navbar-expand-md bg-company-black">
+        <h1><a class="navbar-brand" href="/" id="link1">Room Finder</a></h1>
+        <div class="collapse navbar-collapse navbar-element">
+          <ul class="navbar-nav ml-auto">
+            <% if (user) { %>
+            <li class="nav-item active">
+              <a class="nav-link" id="link4">Please, Complete Your Profile!</a>
+            </li>
+            <% } else { %>
+            <li class="nav-item active">
+              <a class="nav-link" id="link3">Already Registered?</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" id="link4" href="#">Sign In</a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </nav>
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Hey there, Welcome Back !!</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <a href="/auth/facebook" id="sclbtn" style="color:#fff" class="btn btn-facebook icon-left"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
+            <a href="#" id="sclbtn" style="color:#fff" class="btn btn-google-plus icon-left"><i class="fa fa-google-plus"></i>  Sign In with Gmail</a>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <p style="margin-top: 15px" class="mr-auto">Don't have an account?</p>
+            <form action="/signup">
+              <input type="submit" class="signupbtn" value="Sign Up" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <% if (user) { %>
+    <form id="regForm" action="/profile" method="post">
+      <!-- One "tab" for each step in the form: -->
+      <div class="tab">
+        <h1>Personal Information</h1>
+        
+        <p>Name</p>
+        <p><input placeholder="Name" oninput="this.className=''" name="name" value="<%= user.name %>" readonly="readonly"></p>
+        <p>
+        <p>Gender<span style="display:inline-block; width:110px;"></span>Date of Birth</p>
+        <select oninput="this.className=''" name="gender" readonly="readonly">
+          <option><%= user.gender %></option>
+        </select>
+        &nbsp;
+        <input type="text" id="date" oninput="this.className=''" name="dob" value="<%= user.dob %>" readonly="readonly">
+        </p>
+        <p>Phone Number</p>
+        <p><input placeholder="Phone Number"oninput="this.className=''"name="num"></p>
+        <p>Email</p>
+        <p><input placeholder="Email"oninput="this.className=''"name="email" value="<%= user.email %>" readonly="readonly"></p>
+        
+        <input type="hidden" name="fbid" value="<%= user.fbid %>">
+        <p>Profile Picture</p>
+        <div class="file-drop-area">
+          <i class="fa fa-camera fa-2x"></i>
+          <span class="file-msg js-set-number">&nbsp;Add more Pictures</span>
+          <input class="file-input" type="file" multiple name="profilepic"  accept="image/*" multiple="true" required>
+        </div>
+        <br>
+      </div>
+        <% } else { %>
+        <form id="regForm" action="/signup" method="post">
+        <div class="tab">
+        <h1>Personal Information</h1>
+        <input type="button" onclick="location.href='/auth/facebook';" class="fbbtn" value="Fill this instantly with Facebook" />
+        <br><br>
+        <p>Name</p>
+        <p><input placeholder="Name" oninput="this.className=''" name="name"></p>
+        <p>
+        <p>Gender<span style="display:inline-block; width:110px;"></span>Date of Birth</p>
+        <select oninput="this.className=''" name="gender">
+          <option disabled selected value>Select</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+        &nbsp;
+        <input type="text" id="date" placeholder="mm/dd/yyyy" class="datepicker-here" data-language='en' oninput="this.className=''" name="dob">
+        </p>
+        <p>Phone Number</p>
+        <p><input placeholder="Phone Number"oninput="this.className=''"name="num"></p>
+        <p>Email</p>
+        <p><input placeholder="Email"oninput="this.className=''"name="email"></p>
+        <p>Password</p>
+        <p><input placeholder="password"oninput="this.className= ''" name="pwd"></p>
+        <p>Profile Picture</p>
+        <div class="file-drop-area">
+          <i class="fa fa-camera fa-2x"></i>
+          <span class="file-msg js-set-number">&nbsp;Choose your Picture</span>
+          <input class="file-input" type="file" multiple name="profilepic"  accept="image/*" multiple="true" required>
+        </div>
+        <br>
+      </div>
+       <% } %>
+      <div class="tab">
+         <h1>Personal Information</h1>
+         <p>Describe Yourself</p>
+        <p><textarea oninput="this.className=''" name="personal" placeholder="&#x0a;&#x0a;Tell your potential future roommate(s) a little about yourself, your living habits and what you are looking for" style=" width:100% " rows="10"></textarea></p>
+      </div>
+      <div class="tab">
+        <h1>Your Occupation</h1>
+        <p>What do you do?</p>
+        <p><input placeholder="Artist"oninput="this.className= ''"name="workname"></p>
+        <p>Location</p>
+        <p><input placeholder="Work Place"oninput="this.className= ''" name="workplace"></p>
+        <p>Work Description</p>
+        <p><textarea oninput="this.className=''" name="workdescrip" placeholder="&#x0a;&#x0a;Work Description" style=" width:100% " rows="5"></textarea></p>
+      </div>
+      <div class="tab">
+        <h1>Questionnaire</h1>
+
+        <p>How often do you clean your apartment?</p>
+        <input type="radio" class="radio" name="How often do you clean your apartment?" value="Everyday"/>
+        Everyday<br>
+        <input  type="radio" class="radio" name="How often do you clean your apartment?" value="Once a wee"/>
+        Once a week<br>
+        <input  type="radio"  class="radio" name="How often do you clean your apartment?" value="Once a month"/>
+        Once a month<br><br>
+
+        <p>Do you smoke?</p>
+        <input class="radio" type="radio" name="Do you smoke?" value="Very Often"/>
+        Very Often<br>
+        <input class="radio" type="radio" name="Do you smoke?" value="Rarely"/>
+        Rarely<br>
+        <input class="radio" type="radio" name="Do you smoke?" value="No"/>
+        No<br><br>
+
+        <p>How do you feel about pets?</p>
+        <input class="radio" type="radio" name="How do you feel about pets?" value="I have my own pet"/>
+        I have my own pet<br>
+        <input  class="radio" type="radio" name="How do you feel about pets?" value="No pets myself, but I don't mind living with them"/>
+        No pets myself, but I don't mind living with them<br>
+        <input class="radio" type="radio" name="How do you feel about pets?" value="Pets are not allowed"/>
+        Pets are not allowed<br><br>
+
+        <p>How about guests?</p>
+        <input class="radio" type="radio" name="How about guests?" value="Allowed only daytime"/>
+        Allowed only daytime<br>
+        <input  class="radio" type="radio" name="How about guests?" value="Overnight is fine"/>
+        Overnight is fine<br>
+        <input class="radio" type="radio" name="How about guests?" value="Guests are not allowed"/>
+        Guests are not allowed<br><br>
+
+        <p>Which of these describes you best?</p>
+        <input class="checkbox" type="checkbox" name="Foodie"/>
+        Foodie<br>
+        <input class="checkbox" type="checkbox" name="Bookworm"/>
+        Bookworm<br>
+        <input class="checkbox" type="checkbox" name="Fitness Junkie"/>
+        Fitness Junkie<br>
+        <input class="checkbox" type="checkbox" name="Party Person"/>
+        Party Person<br>
+        <input class="checkbox" type="checkbox" name="Night Owl"/>
+        Night Owl<br><br>
+      </div>
+      <div style="overflow:auto;">
+        <div style="float:right;">
+          <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+          <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+      </div>
+      <!-- Circles which indicates the steps of the form: -->
+      <div style="text-align:center;margin-top:40px;">
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+      </div>
+    </form>
+    <script type="text/javascript" src="/js/signup.js"></script>
+  </body>
+</html>

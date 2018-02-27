@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/socialbtn.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+      <nav class="navbar fixed-top navbar-expand-md bg-company-black">
+        <h1><a class="navbar-brand" href="/">Room Finder</a></h1>
+        <div class="collapse navbar-collapse navbar-element">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" id="link1" href="/findroom">Find a Room</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/postroom" id="link2">Post a Room</a>
+            </li>
+            <% if (user) { %>
+            <li class="nav-item active">
+              <a class="nav-link" href="/signout" id="link3">Sign out</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/profile" id="link4">Profile</a>
+            </li>
+            <% } else { %>
+            <li class="nav-item active">
+              <a class="nav-link" id="link3" href="#signin" data-toggle="modal" data-target="#myModal">Sign In</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" id="link4" href="/signup">Sign Up</a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </nav>
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Hey there, Welcome Back !!</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <a href="/auth/facebook" id="sclbtn" style="color:#fff" class="btn btn-facebook icon-left"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
+            <a href="/signin" id="sclbtn" style="color:#fff" class="btn btn-email icon-left"><i class="fa fa-envelope"></i>  Sign In with Email</a>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <p style="margin-top: 15px" class="mr-auto">Don't have an account?</p>
+            <form action="/signup">
+              <input type="submit" class = "signupbtn" value="Sign Up" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="jumbotron text-center" id="jumbo1">
+      <h1 class="jumbotron-heading" style="margin-top:100px">Find Roommates Who Get You</h1>
+      <p>Search thousands of listings across town or around the world</p>
+      <br><br><br>
+      <form class="search-container">
+        <input type="text" id="search-bar" placeholder="Enter a street, area or city">
+        <img class="search-icon" src="/images/search-icon.png">
+        <input type="submit" name="search" class="search" value="Search">
+      </form>
+    </div>
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Why Use Room Finder</h1>
+        <p class="lead text-muted">Happy Roommates stay longer! Find a Room with a suitable Roommate</p>
+        <br><br><br>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <i class="fa fa-home fa-3x" aria-hidden="true"></i>
+              <h2>Find suitable Room</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea  cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <p><a class="btn btn-primary" href="#" role="button">Find a Room</a></p>
+            </div>
+            <div class="col-sm-4">
+              <i class="fa fa-group fa-3x"   aria-hidden="true"></i>
+              <h2>Meet your Roommates</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <p><a class="btn btn-primary" href="#" role="button">Post a Room</a></p>
+            </div>
+            <div class="col-sm-4">
+              <i class="fa fa-commenting-o fa-3x"  aria-hidden="true"></i>
+              <h2>Secure In-App Chat</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <p><a class="btn btn-primary" href="#" role="button">Visit FAQ's</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer-bottom bg-dark mt-5">
+      <div class="text-light text-center display-7 p-3" >&copy;2018 <a href="/" style="text-decoration:none">Room Finder</a>, All rights reserved 2018-2019</div>
+    </footer>
+    <script type="text/javascript">
+    function activatePlacesSearch()
+    {
+      var input = document.getElementById('search-bar');
+      autocomplete = new google.maps.places.Autocomplete(input);
+      google.maps.event.addListener(autocomplete, 'place_changed', function()
+      {
+        var place = autocomplete.getPlace();
+        for (var i = 0; i < place.address_components.length; i++)
+        {
+          for (var j = 0; j < place.address_components[i].types.length; j++)
+          {
+            if(place.address_components[i].types[j] == "postal_code")
+            {
+              var postalCode = place.address_components[i].long_name;
+              input.value = input.value+", "+ postalCode;
+            }
+          }
+        } 
+      });
+    }
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHEyAkrAoSgDJd_X2myljmZSBW3GqUau8&libraries=places&callback=activatePlacesSearch"></script>
+  </body>
+</html>

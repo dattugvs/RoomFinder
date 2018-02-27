@@ -1,0 +1,74 @@
+.signupbtn {
+	background-color: #fff;
+	color: black;
+	border: none;
+	cursor: pointer;
+}
+#jumbo1 {
+	height: 700px;
+	background-color: black;
+	color: #fff;
+}
+
+#jumbo2 {
+	height: 500px;
+
+}
+
+#searchimg {
+    float:left;
+}
+
+#searchtxt {
+    float:right;
+}
+
+#search {
+	font-size: 20px;
+	width: 50%;
+}
+
+.search-container {
+  width: 490px;
+  display: block;
+  margin: 0 auto;
+  right: 100px;
+}
+
+input#search-bar {
+  margin: 0 auto;
+  width: 600px;
+  height: 60px;
+  padding: 0 20px;
+  font-size: 1rem;
+  border: 1px solid #fff;
+  outline: none;
+  right: 400px;
+}
+
+.search-icon {
+  position: relative;
+  float: right;
+  width: 75px;
+  height: 60px;
+  top: -60px;
+  right: 480px;
+  border: 1px solid #fff;
+}
+.search{
+    position: relative;
+    top: -60px;
+    right: -450px;
+    background-color: #FF4500;
+    border: none;
+    color: white;
+    padding: 18px 34px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.rowimg {
+	width: 75px;
+	height: 75px;
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Room</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/postroom.css">
+    <link rel="stylesheet" type="text/css" href="/css/socialbtn.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link href="/css/datepicker.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/datepicker.min.js"></script>
+    <script src="/js/datepicker.en.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      body {
+      background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+      <nav class="navbar fixed-top navbar-expand-md bg-company-black">
+        <h1><a class="navbar-brand" href="/">Room Finder</a></h1>
+        <div class="collapse navbar-collapse navbar-element">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" id="link1" href="/findroom">Find a Room</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/postroom" id="link2">Post a Room</a>
+            </li>
+            <% if (user) { %>
+            <li class="nav-item active">
+              <a class="nav-link" href="/signout" id="link3">Sign out</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/profile" id="link4">Profile</a>
+            </li>
+            <% } else { %>
+            <li class="nav-item active">
+              <a class="nav-link" id="link3" href="#signin" data-toggle="modal" data-target="#myModal">Sign In</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" id="link4" href="/signup">Sign Up</a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </nav>
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Hey there, Welcome Back !!</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <a href="/auth/facebook" id="sclbtn" style="color:#fff" class="btn btn-facebook icon-left"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
+            <a href="/signin" id="sclbtn" style="color:#fff" class="btn btn-email icon-left"><i class="fa fa-envelope"></i>  Sign In with Email</a>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <p style="margin-top: 15px" class="mr-auto">Don't have an account?</p>
+            <form action="/signup">
+              <input type="submit" class = "signupbtn" value="Sign Up" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form id="regForm" action="/postroom" method="post">
+      <div class="tab">
+        <h2>Roommate Detiails</h2>
+        <p>Ideal Roommate Gender</p>
+        <input class="radio" type="radio" name="genderpref" value="male">Male<br>
+        <input class="radio" type="radio" name="genderpref" value="female">Female<br>
+        <input class="radio" type="radio" name="genderpref" value="either">Either<br><br>
+        <p>Ideal Roommate Age</p>
+        <input class="checkbox" type="checkbox" name="agepref" value="Early 20's">Early 20's<br>
+        <input  class="checkbox" type="checkbox" name="agepref" value="Early 30's">Early 30's<br>
+        <input class="checkbox" type="checkbox" name="agepref" value="30's">30's<br>
+        <input class="checkbox" type="checkbox" name="agepref" value="40's and Older">40's and Older<br><br>
+        <h2>Room Location</h2>
+        <p>Door Number</p>
+        <p><input placeholder="Door Number"oninput="this.className=''"name="drno"></p>
+        <p>Street Address</p>
+        <p><input id="street" placeholder="Street Address"oninput="this.className=''"name="street"></p>
+        <p>City</p>
+        <p><input id="city" placeholder="City"oninput="this.className=''"name="city"></p>
+        <p>State</p>
+        <p><input id="state" placeholder="State"oninput="this.className=''"name="state"></p>
+        <p>Zip Code</p>
+        <p><input id="zip" placeholder="Zip Code"oninput="this.className=''"name="zip"></p>
+        <input type="hidden" name="location" id="location" value="">
+      </div>
+      <div class="tab">
+        <h2>Pricing & Availability</h2>
+        <p>Monthly Rent (<i class="fa fa-inr"></i>)</p>
+        <p><input placeholder="Enter Amount"oninput="this.className= ''" name="rent"></p>
+        <p>Deposit (<i class="fa fa-inr"></i>)</p>
+        <p><input placeholder="Enter Amount" oninput="this.className= ''" name="deposit"></p>
+        <p>Move In and Upto (date - date):</p>
+        <p><input type="text"
+          name="duration" 
+          data-range="true"
+          data-multiple-dates-separator=" - "
+          data-language="en"
+          class="datepicker-here" placeholder="mm/dd/yyyy   -   mm/dd/yyyy" />
+        </p>
+        <h2>Room Description</h2>
+        <p>What's awesome about your place (and you)?</p>
+        <p><textarea oninput="this.className=''" name="roomdescrip" placeholder="&#x0a;&#x0a;What's nearby? What's coolest thing about yor place?" style=" width:100% " rows="10" name="description"></textarea></p>
+      </div>
+      <div class="tab">
+        <h1>Room Photos</h1>
+        <p>Let's show off your space!</p>
+        <div class="file-drop-area">
+          <i class="fa fa-camera fa-2x"></i>
+          <span class="file-msg js-set-number">&nbsp;Upload your Room Pictures</span>
+          <input class="file-input" type="file" multiple name="photos"  accept="image/*" multiple="true" required>
+        </div>
+        <br>
+        <p>Be sure to include high-quality versions of the following:
+          <li>A photo of each room your potential roommate will have access to</li>
+<li>Try to include photos you have taken yourself</li>
+        <br>
+      </div>
+      <div class="tab">
+        <h1>Amenities</h1>
+        <p>Any amenities your roommate should know about?</p>
+        <p><textarea oninput="this.className=''" name="amenities" placeholder="&#x0a;&#x0a;What's nearby? What's coolest thing about yor place?" style=" width:100% " rows="10" name="amenities"></textarea></p>
+        <br>
+        <h1>Rules</h1>
+        <p>Any ground rules your roommate should know about?</p>
+        <p><textarea oninput="this.className=''" name="amenities" placeholder="&#x0a;&#x0a;What's nearby? What's coolest thing about yor place?" style=" width:100% " rows="10" name="rules"></textarea></p>
+        <br>
+      </div>
+      <div style="overflow:auto;">
+        <div style="float:right;">
+          <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+          <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+      </div>
+      <!-- Circles which indicates the steps of the form: -->
+      <div style="text-align:center;margin-top:40px;">
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+      </div>
+    </form>
+    <script type="text/javascript" src="/js/postroom.js"></script>
+    <script type="text/javascript"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHEyAkrAoSgDJd_X2myljmZSBW3GqUau8&libraries=places&callback=activatePlacesSearch"></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Room Profile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/signin.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/socialbtn.css">
+</head>
+<body>
+      <nav class="navbar fixed-top navbar-expand-md bg-company-black">
+        <h1><a class="navbar-brand" href="/">Room Finder</a></h1>
+        <div class="collapse navbar-collapse navbar-element">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" id="link1" href="/findroom">Find a Room</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/postroom" id="link2">Post a Room</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" id="link3">Don't have an account ?</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" id="link4" href="/signup">Sign Up</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <br><br><br><br><br>
+    <h2 align="center" style="margin-top: 100px">Login Form</h2>
+  <form method="post" action="/signin" style="margin-top: 50px" align="center">
+      <label>Username</label>
+      <input type="text" name="email" id="email" placeholder="Email" required>
+      </br></br>
+      <label>Password</label>
+      <input type="password" name="pwd" id="pwd" placeholder="Password" required>
+      </br></br>
+      <input type="button" value="Submit" style="margin-right: 30px"              onclick="getList()">
+      <input type="reset" value="Reset">
+    <script type="text/javascript" src="/js/signin.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/findroom.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/css/slider.css">
+    <link href="/css/datepicker.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/js/datepicker.min.js"></script>
+    <script src="/js/datepicker.en.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      body {
+      background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+      <nav class="navbar fixed-top navbar-expand-md bg-company-black">
+        <h1><a class="navbar-brand" href="/">Room Finder</a></h1>
+        <div class="collapse navbar-collapse navbar-element">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" id="link1" href="/findroom">Find a Room</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/postroom" id="link2">Post a Room</a>
+            </li>
+            <% if (user) { %>
+            <li class="nav-item active">
+              <a class="nav-link" href="/signout" id="link3">Sign out</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/profile" id="link4">Profile</a>
+            </li>
+            <% } else { %>
+            <li class="nav-item active">
+              <a class="nav-link" id="link3" href="#signin" data-toggle="modal" data-target="#myModal">Sign In</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" id="link4" href="/signup">Sign Up</a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </nav>
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Hey there, Welcome Back !!</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <a href="/auth/facebook" id="sclbtn" style="color:#fff" class="btn btn-facebook icon-left"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
+            <a href="#" id="sclbtn" style="color:#fff" class="btn btn-google-plus icon-left"><i class="fa fa-google-plus"></i>  Sign In with Gmail</a>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <p style="margin-top: 15px" class="mr-auto">Don't have an account?</p>
+            <form action="/signup">
+              <input type="submit" class = "signupbtn" value="Sign Up" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div id="user">
+      Username : <%= profileuser.name %>   <br>
+      Gender   : <%= profileuser.gender %> <br>
+      Dob      : <%= profileuser.dob %>    <br>
+      Email    : <%= profileuser.email %>  <br>
+    </div>
+</body>
+</html>
